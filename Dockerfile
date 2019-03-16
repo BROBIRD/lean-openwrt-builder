@@ -1,6 +1,7 @@
 FROM ubuntu:18.10
 MAINTAINER brobirdcn@gmail.com
 
+ENV DEBIAN_FRONTEND noninteractive
 RUN \
   apt-get update && \
   apt-get -y upgrade && \
@@ -21,4 +22,3 @@ RUN \
 WORKDIR /lede
 
 ENV FORCE_UNSAFE_CONFIGURE 1
-ENV DEBIAN_FRONTEND noninteractive
