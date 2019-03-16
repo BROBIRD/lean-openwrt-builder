@@ -2,6 +2,7 @@ FROM ubuntu:18.10
 MAINTAINER brobirdcn@gmail.com
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV FORCE_UNSAFE_CONFIGURE 1
 RUN \
   apt-get update && \
   apt-get -y upgrade && \
@@ -17,10 +18,16 @@ RUN \
   mv ./openwrt-r8168 ./lede/package/lean/openwrt-r8168 && \
   cd lede && \
   ./scripts/feeds update -a && \
-  ./scripts/feeds install -a 
+  ./scripts/feeds install -a && \
+  wget -O ./.config https://raw.githubusercontent.com/BROBIRD/lean-openwrt-builder/master/.config &&\
+  make -j1 V=s && \
+  cp ./bin ../ROM && \
+  make clean && \
+  make dirclean && \
+  make distclean && \
+  apt-get autoremoe -y build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev && \
+  apt-get autoremoe -y lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp && \
+  apt-get autoremoe -y libssl-dev texinfo libglib2.0-dev && \
+  apt-get autoremoe -y wget curl nano 
 
 WORKDIR /lede
-ADD .config .
-RUN make -j1 V=s
-
-ENV FORCE_UNSAFE_CONFIGURE 1
