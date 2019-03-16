@@ -1,8 +1,7 @@
 FROM ubuntu:18.10
 MAINTAINER brobirdcn@gmail.com
 
-ENV DEBIAN_FRONTEND noninteractive
-ENV FORCE_UNSAFE_CONFIGURE 1
+ENV DEBIAN_FRONTEND=noninteractive FORCE_UNSAFE_CONFIGURE=1
 RUN \
   apt-get update && \
   apt-get -y upgrade && \
@@ -29,5 +28,3 @@ RUN \
   apt-get autoremoe -y lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp && \
   apt-get autoremoe -y libssl-dev texinfo libglib2.0-dev && \
   apt-get autoremoe -y wget curl nano 
-
-WORKDIR /lede
