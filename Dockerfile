@@ -17,8 +17,10 @@ RUN \
   mv ./openwrt-r8168 ./lede/package/lean/openwrt-r8168 && \
   cd lede && \
   ./scripts/feeds update -a && \
-  ./scripts/feeds install -a
+  ./scripts/feeds install -a 
 
 WORKDIR /lede
+ADD .config .
+RUN make -j1 V=s
 
 ENV FORCE_UNSAFE_CONFIGURE 1
