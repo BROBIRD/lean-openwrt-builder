@@ -9,7 +9,6 @@ RUN \
   apt-get install -y libssl-dev texinfo libglib2.0-dev && \
   apt-get install -y wget curl nano && \
   rm -rf /var/lib/apt/lists/* && \
-  
   git clone https://github.com/coolsnowwolf/lede.git && \
   git clone https://github.com/Zy143L/CloudXNS.git && \
   mv ./CloudXNS/luci-app-cloudxns ./lede/package/lean/luci-app-cloudxns && \
