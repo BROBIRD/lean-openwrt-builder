@@ -16,4 +16,4 @@ RUN \
   cp ./bin ../ROM && \
   make clean && \
   make dirclean && \
-  make distclean && \
+  make distclean
