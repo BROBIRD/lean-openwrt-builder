@@ -11,5 +11,5 @@ RUN \
   cd lede && \
   ./scripts/feeds update -a && \
   ./scripts/feeds install -a && \
-  wget -O ./.config https://raw.githubusercontent.com/BROBIRD/lean-openwrt-builder/master/.config
+  wget -O ./.config https://raw.githubusercontent.com/BROBIRD/lean-openwrt-builder/master/.config && \
   make -j$(nproc) V=s
