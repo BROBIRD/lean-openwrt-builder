@@ -6,8 +6,6 @@ RUN \
   git clone https://github.com/coolsnowwolf/lede.git && \
   git clone https://github.com/Zy143L/CloudXNS.git && \
   mv ./CloudXNS/luci-app-cloudxns ./lede/package/lean/luci-app-cloudxns && \
-  git clone https://github.com/BROBIRD/openwrt-r8168.git && \
-  mv ./openwrt-r8168 ./lede/package/lean/openwrt-r8168 && \
   cd lede && \
   ./scripts/feeds update -a && \
   ./scripts/feeds install -a && \
